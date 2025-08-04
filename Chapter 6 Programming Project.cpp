@@ -3,60 +3,25 @@
 
 #include <iostream>
 using namespace std;
+#include <iomanip>
 
-void getRegInfo(string &region, int &accidents);
-bool isLower(int accident1, int accident2);
-void showLowest(string &region, int &accidents);
-string north, south, east, west, central;
-int acc1, acc2, acc3, acc4, acc5;
-
+double getCelsius(double farenheit);
+double farenheit, celsius;
 int main()
 {
-	getRegInfo(north, acc1);
-	getRegInfo(south, acc2);
-	getRegInfo(east, acc3);
-	getRegInfo(west, acc4);
-	getRegInfo(central, acc5);
+	cout << setprecision(1) << fixed << showpoint;
+	cout << "\tFarenheit" << setw(10) << "\tCelsius" << endl;
+	cout << "-----------------------------------" << endl;
 
-	if (isLower(acc1, acc2) && isLower(acc1, acc3) && isLower(acc1, acc4) && isLower(acc1, acc5))
+	for (double farenheit = 0; farenheit <= 20; farenheit++) 
 	{
-		showLowest(north, acc1);
-	}
-	else if (isLower(acc2, acc1) && isLower(acc2, acc3) && isLower(acc2, acc4) && isLower(acc2, acc5))
-	{
-		showLowest(south, acc2);
-	}
-	else if (isLower(acc3, acc1) && isLower(acc3, acc2) && isLower(acc3, acc4) && isLower(acc3, acc5))
-	{
-		showLowest(east, acc3);
-	}
-	else if (isLower(acc4, acc1) && isLower(acc4, acc2) && isLower(acc4, acc3) && isLower(acc4, acc5))
-	{
-		showLowest(west, acc4);
-	}
-	else
-	{
-		showLowest(central, acc5);
+		getCelsius(farenheit);
+		cout << right << setw(15) << farenheit << setw(15) << celsius << endl;
 	}
 	return 0;
 }
-void getRegInfo(string &region, int &accidents)
+double getCelsius(double farenheit)
 {
-	cout << "Please enter the name of your region\n";
-	cin >> region;
-	cout << "Please enter the number of accidents that occurred in that region during the past year\n";
-	cin >> accidents;
-	while (accidents <= 0)
-	{
-		cout << "The number of accidents cannot be negative.\n";
-		cin >> accidents;
-	}
-}
-bool isLower(int accident1, int accident2)
-{
-	return accident1 < accident2;
-}
-void showLowest(string &region, int &accidents)
-{
-	cout << "The region with the lowest number of accidents is " << region << " with " << accidents << " accidents.\n";
+	celsius = (farenheit - 32) * 5 / 9;
+	return celsius;
 }
