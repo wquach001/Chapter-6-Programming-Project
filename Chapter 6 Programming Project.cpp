@@ -3,45 +3,60 @@
 
 #include <iostream>
 using namespace std;
-//Define and initialize global variables
-int width = 0, perimeter = 0, area = 0, length = 0;
 
-//Function prototypes
-void getLength_Width(int &length, int &width);
-int calcPerimeter(int, int);
-int calcArea(int, int);
-void displayProperties();
+void getRegInfo(string &region, int &accidents);
+bool isLower(int accident1, int accident2);
+void showLowest(string &region, int &accidents);
+string north, south, east, west, central;
+int acc1, acc2, acc3, acc4, acc5;
 
 int main()
 {
-	getLength_Width(length, width);
-	perimeter = calcPerimeter(length, width);
-	area = calcArea(length, width);
-	displayProperties();
+	getRegInfo(north, acc1);
+	getRegInfo(south, acc2);
+	getRegInfo(east, acc3);
+	getRegInfo(west, acc4);
+	getRegInfo(central, acc5);
+
+	if (isLower(acc1, acc2) && isLower(acc1, acc3) && isLower(acc1, acc4) && isLower(acc1, acc5))
+	{
+		showLowest(north, acc1);
+	}
+	else if (isLower(acc2, acc1) && isLower(acc2, acc3) && isLower(acc2, acc4) && isLower(acc2, acc5))
+	{
+		showLowest(south, acc2);
+	}
+	else if (isLower(acc3, acc1) && isLower(acc3, acc2) && isLower(acc3, acc4) && isLower(acc3, acc5))
+	{
+		showLowest(east, acc3);
+	}
+	else if (isLower(acc4, acc1) && isLower(acc4, acc2) && isLower(acc4, acc3) && isLower(acc4, acc5))
+	{
+		showLowest(west, acc4);
+	}
+	else
+	{
+		showLowest(central, acc5);
+	}
 	return 0;
 }
-void getLength_Width(int &length, int &width)
+void getRegInfo(string &region, int &accidents)
 {
-	cout << "Enter the length of the rectangle: ";
-	cin >> length;
-	cout << "Enter the width of the rectangle: ";
-	cin >> width;
-	if (length <= 0 || width <= 0)
+	cout << "Please enter the name of your region\n";
+	cin >> region;
+	cout << "Please enter the number of accidents that occurred in that region during the past year\n";
+	cin >> accidents;
+	while (accidents <= 0)
 	{
-		cout << "Length and width must be greater than 0." << endl;
+		cout << "The number of accidents cannot be negative.\n";
+		cin >> accidents;
 	}
 }
-int calcPerimeter(int length, int width)
+bool isLower(int accident1, int accident2)
 {
-	return 2 * (length + width);
+	return accident1 < accident2;
 }
-int calcArea(int length, int width)
+void showLowest(string &region, int &accidents)
 {
-	return length * width;
+	cout << "The region with the lowest number of accidents is " << region << " with " << accidents << " accidents.\n";
 }
-void displayProperties()
-{
-	cout << "The area of the rectangle is: " << area << endl;
-	cout << "The perimeter of the rectangle is: " << perimeter << endl;
-}
-cout << "hi\n";
