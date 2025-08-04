@@ -44,3 +44,4 @@ void displayProperties()
 	cout << "The area of the rectangle is: " << area << endl;
 	cout << "The perimeter of the rectangle is: " << perimeter << endl;
 }
+cout << "hi\n";
