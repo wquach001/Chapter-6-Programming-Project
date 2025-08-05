@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 
+//State function prototypes
 void getRegInfo(string &region, int &accidents);
 bool isLower(int accident1, int accident2);
 void showLowest(string &region, int &accidents);
@@ -12,12 +13,14 @@ int acc1, acc2, acc3, acc4, acc5;
 
 int main()
 {
+	//call functions to get region and accident info
 	getRegInfo(north, acc1);
 	getRegInfo(south, acc2);
 	getRegInfo(east, acc3);
 	getRegInfo(west, acc4);
 	getRegInfo(central, acc5);
 
+	//compare the number of accidents in each region and display the region with the lowest number of accidents
 	if (isLower(acc1, acc2) && isLower(acc1, acc3) && isLower(acc1, acc4) && isLower(acc1, acc5))
 	{
 		showLowest(north, acc1);
@@ -52,6 +55,7 @@ void getRegInfo(string &region, int &accidents)
 		cin >> accidents;
 	}
 }
+//compare the number of accidents in each region to determine which region has the lower & lowest number of accidents
 bool isLower(int accident1, int accident2)
 {
 	return accident1 < accident2;
