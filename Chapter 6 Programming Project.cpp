@@ -42,6 +42,7 @@ int main()
 
 	return 0;
 }
+//asks how many square feet in each room
 double getSqFt()
 {
 	double squareFeet = 0;
@@ -64,6 +65,7 @@ int gallonsForRoom (double squareFeet)
 	}
 	return galNeeded;
 }
+//asks for price per gallon of paint
 double getPricePerGallon()
 {
 	double paintPrice = 0;
@@ -77,6 +79,7 @@ double getPricePerGallon()
 	return paintPrice;
 }
 
+//ask how many rooms to paint
 int getRooms()
 {
 	int numRooms = (int) 0;
@@ -88,6 +91,7 @@ int getRooms()
 	}
 	return numRooms;
 }
+// display the estimate for the job
 void displayEstimate (double paintCharge, int gallonsNeeded, double laborCharge, double laborHours, int numrooms)
 {
 	cout << "Estimate for painting " << numrooms << " room(s):" << endl;
